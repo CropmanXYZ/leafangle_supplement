@@ -1,0 +1,50 @@
+Refined QTL from chosen model (within model selection) with pLOD for phenotype: 
+leaf_4_angle_GH117_LD_2014_SKTRFM_normalized
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Fit model statistics
+
+
+		fitqtl summary
+
+Method: multiple imputation 
+Model:  normal phenotype
+Number of observations : 336 
+
+Full model result
+----------------------------------  
+Model formula: y ~ Q1 + Q2 
+
+       df       SS         MS      LOD     %var Pvalue(Chi2) Pvalue(F)
+Model   4 122.8829 30.7207214 34.51075 37.68697            0         0
+Error 331 203.1791  0.6138342                                         
+Total 335 326.0620                                                    
+
+
+Drop one QTL at a time ANOVA table: 
+----------------------------------  
+       df Type III SS    LOD   %var F value Pvalue(Chi2) Pvalue(F)    
+5@23.2  2       15.03  5.206  4.608   12.24            0  7.44e-06 ***
+7@81.0  2      108.87 31.306 33.390   88.68            0   < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+LOD 2 intervals of the QTL model
+
+Q1
+                chr      pos      lod
+5_2714801_indel   5 16.87523 2.043998
+5_3568575_SNP     5 23.22884 5.205644
+5_4811892_SNP     5 28.38383 1.860956
+
+Q2
+                 chr      pos      lod
+7_58005393_SNP     7 74.07915 29.04281
+7_59018247_indel   7 80.98144 31.30589
+7_59963697_indel   7 87.32222 16.64688
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

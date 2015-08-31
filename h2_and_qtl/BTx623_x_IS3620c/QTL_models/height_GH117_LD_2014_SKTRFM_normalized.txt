@@ -1,0 +1,50 @@
+Refined QTL from chosen model (within model selection) with pLOD for phenotype: 
+veg_height_GH117_LD_2014_SKTRFM_normalized
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Fit model statistics
+
+
+		fitqtl summary
+
+Method: multiple imputation 
+Model:  normal phenotype
+Number of observations : 303 
+
+Full model result
+----------------------------------  
+Model formula: y ~ Q1 + Q2 
+
+       df       SS         MS      LOD     %var Pvalue(Chi2) Pvalue(F)
+Model   4 139.5926 34.8981609 42.52318 47.60149            0         0
+Error 298 153.6601  0.5156378                                         
+Total 302 293.2527                                                    
+
+
+Drop one QTL at a time ANOVA table: 
+----------------------------------  
+       df Type III SS   LOD  %var F value Pvalue(Chi2) Pvalue(F)    
+6@29.8  2       40.17 15.28 13.70   38.95            0  8.88e-16 ***
+7@77.3  2      110.91 35.75 37.82  107.55            0   < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+LOD 2 intervals of the QTL model
+
+Q1
+                 chr      pos      lod
+6_41892476_SNP     6 27.68932 12.17087
+6_42508412_indel   6 29.80569 15.28137
+6_44528414_SNP     6 31.95463 12.29983
+
+Q2
+                 chr      pos      lod
+7_58307356_SNP     7 75.84617 33.70082
+7_58656171_SNP     7 77.34636 35.75179
+7_58779394_indel   7 78.80337 30.39501
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

@@ -1,0 +1,35 @@
+Refined QTL from chosen model (within model selection) with pLOD for phenotype: 
+angle_leaf_4_avg_gh204A_2013_normalized
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Fit model statistics
+
+
+		fitqtl summary
+
+Method: multiple imputation 
+Model:  normal phenotype
+Number of observations : 94 
+
+Full model result
+----------------------------------  
+Model formula: y ~ Q1 
+
+      df       SS        MS      LOD     %var Pvalue(Chi2)    Pvalue(F)
+Model  2 17.41782 8.7089102 4.596255 20.16243 2.533638e-05 3.551678e-05
+Error 91 68.96970 0.7579088                                            
+Total 93 86.38752                                                      
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+LOD 2 intervals of the QTL model
+
+Q1
+                 chr       pos      lod
+1_13618972_SNP     1  52.38842 2.585392
+1_55946705_SNP     1 128.75659 4.596255
+1_61283994_indel   1 145.33657 2.403402
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

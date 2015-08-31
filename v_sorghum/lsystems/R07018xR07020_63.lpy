@@ -1,0 +1,209 @@
+#R07017xR07020_RIL_63
+from openalea.plantgl.all import *
+from math import cos, sin, degrees, radians, atan2, sqrt
+from random import randrange
+
+NbPhyto = 16
+internodes = [3*.087]*NbPhyto
+leaf = [2.6]*NbPhyto
+phi = 180
+lw = 0.2
+
+def stem_angle():
+  random_n = randrange(1,100,50)
+  return float(randrange(-1,1,random_n))/10.0
+
+
+module plant : scale = 1
+module A(n) : scale = 2
+module I(l) : scale = 2
+module L_senesce(l,p) : scale = 2
+module L_expanded(l,p) : scale = 2
+module L_expanded_new(l,p) : scale = 2
+module L_expanded_old(l,p) : scale = 2
+module L_whorl(l,p) : scale = 2
+
+Axiom: plant SetWidth(0.0125)A(NbPhyto)
+
+derivation length: 2
+production:
+
+A(n): 
+  for phytomer in range(n) :
+    if (phytomer > (NbPhyto - 2)) :
+      nproduce I(internodes[phytomer]*0.10)^(stem_angle(),1,1) [/((phi+parameter_4(phytomer/NbPhyto))*phytomer) L_whorl(leaf[phytomer], phi*phytomer+parameter_4(phytomer/NbPhyto))]
+    elif (phytomer > (NbPhyto - 3)) :
+      nproduce I(internodes[phytomer]*0.25)^(stem_angle(),1,1) [/((phi+parameter_4(phytomer/NbPhyto))*phytomer)^(5) L_whorl(leaf[phytomer], phi*phytomer+parameter_4(phytomer/NbPhyto))]
+    elif (phytomer > (NbPhyto - 4)) :
+      nproduce I(internodes[phytomer]*0.5)^(stem_angle(),1,1) [/((phi+parameter_4(phytomer/NbPhyto))*phytomer)^(8) L_whorl(leaf[phytomer], phi*phytomer+parameter_4(phytomer/NbPhyto))]
+    elif (phytomer > (NbPhyto - 6)) :
+      nproduce I(internodes[phytomer]*0.5)^(stem_angle(),1,1) [/((phi+parameter_4(phytomer/NbPhyto))*phytomer)^(8) L_expanded_new(leaf[phytomer], phi*phytomer+parameter_4(phytomer/NbPhyto))]
+    elif (phytomer > (NbPhyto - 8)) :
+      nproduce I(internodes[phytomer]*0.5)^(stem_angle(),1,1) [/((phi+parameter_4(phytomer/NbPhyto))*phytomer)^(12) L_expanded_new(leaf[phytomer], phi*phytomer+parameter_4(phytomer/NbPhyto))]
+    elif (phytomer > (NbPhyto - 10)) :
+      nproduce I(internodes[phytomer]*0.75)^(stem_angle(),1,1) [/((phi+parameter_4(phytomer/NbPhyto))*phytomer)^(15) L_expanded_old(leaf[phytomer], phi*phytomer+parameter_4(phytomer/NbPhyto))]
+    elif (phytomer > (NbPhyto - 12)) :
+      nproduce I(internodes[phytomer]*0.75)^(stem_angle(),1,1) [/((phi+parameter_4(phytomer/NbPhyto))*phytomer)^(25) L_expanded_old(leaf[phytomer], phi*phytomer+parameter_4(phytomer/NbPhyto))]
+    elif (phytomer > (NbPhyto - 14)) :
+      nproduce I(internodes[phytomer]*0.75)^(stem_angle(),1,1) [/((phi+parameter_4(phytomer/NbPhyto))*phytomer)^(35) L_expanded_old(leaf[phytomer], phi*phytomer+parameter_4(phytomer/NbPhyto))]
+    elif (phytomer > (NbPhyto - 16)) :
+      nproduce I(internodes[phytomer]*0.750)^(stem_angle(),1,1) [/((phi+parameter_4(phytomer/NbPhyto))*phytomer)^(30) L_senesce(leaf[phytomer], phi*phytomer+parameter_4(phytomer/NbPhyto))]
+    elif (phytomer > (NbPhyto - NbPhyto)) :
+      nproduce I(internodes[phytomer]*0.750)^(stem_angle(),1,1) [/((phi)*phytomer)^(20) L_senesce(leaf[phytomer], phi*phytomer+parameter_4(phytomer/NbPhyto))]
+
+
+interpretation:
+
+I(l) --> SetColor(3)F(l)
+
+L_senesce(l, angle):
+  nproduce SetColor(4)@Gc SetContour(parameter_3)
+  sp = 0
+  ap = 0
+  for i in range(10):
+    s = float(i+1)/10
+    if parameter(s) >0.:
+      pt1 = leaf_senesce.getPointAt(sp)
+      pt2 = leaf_senesce.getPointAt(s)
+      sp = s
+      r = (pt2[0]-pt1[0])*l  
+      z = (pt2[1]-pt1[1])*l
+      dl = sqrt(r**2 + z**2)
+      a = atan2(r,z) - ap
+      ap = atan2(r,z)
+      nproduce SetWidth(parameter(s)*l*lw) ^(degrees(a)) F(dl)
+  nproduce @Ge    
+
+L_expanded(l, angle):
+  nproduce SetColor(2)@Gc SetContour(parameter_3)
+  sp = 0
+  ap = 0
+  for i in range(10):
+    s = float(i+1)/10
+    if parameter(s) >0.:
+      pt1 = leaf_expanded.getPointAt(sp)
+      pt2 = leaf_expanded.getPointAt(s)
+      sp = s
+      r = (pt2[0]-pt1[0])*l  
+      z = (pt2[1]-pt1[1])*l
+      dl = sqrt(r**2 + z**2)
+      a = atan2(r,z) - ap
+      ap = atan2(r,z)
+      nproduce SetWidth(parameter(s)*l*lw) ^(degrees(a)) F(dl)
+  nproduce @Ge    
+
+L_whorl(l, angle):
+  nproduce SetColor(1)@Gc SetContour(parameter_3)
+  sp = 0
+  ap = 0
+  for i in range(10):
+    s = float(i+1)/10
+    if parameter(s) >0.:
+      pt1 = leaf_whorl.getPointAt(sp)
+      pt2 = leaf_whorl.getPointAt(s)
+      sp = s
+      r = (pt2[0]-pt1[0])*l      
+      z = (pt2[1]-pt1[1])*l
+      dl = sqrt(r**2 + z**2)
+      a = atan2(r,z) - ap
+      ap = atan2(r,z)
+      nproduce SetWidth(parameter(s)*l*lw) ^(degrees(a))F(dl)
+  nproduce @Ge    
+
+L_expanded_new(l, angle):
+  nproduce SetColor(2)@Gc SetContour(parameter_3)
+  sp = 0
+  ap = 0
+  for i in range(10):
+    s = float(i+1)/10
+    if parameter(s) >0.:
+      pt1 = leaf_expanded_new.getPointAt(sp)
+      pt2 = leaf_expanded_new.getPointAt(s)
+      sp = s
+      r = (pt2[0]-pt1[0])*l  
+      z = (pt2[1]-pt1[1])*l
+      dl = sqrt(r**2 + z**2)
+      a = atan2(r,z) - ap
+      ap = atan2(r,z)
+      nproduce SetWidth(parameter(s)*l*lw) ^(degrees(a)) F(dl)
+  nproduce @Ge    
+
+
+L_expanded_old(l, angle):
+  nproduce SetColor(3)@Gc SetContour(parameter_3)
+  sp = 0
+  ap = 0
+  for i in range(10):
+    s = float(i+1)/10
+    if parameter(s) >0.:
+      pt1 = leaf_expanded_old.getPointAt(sp)
+      pt2 = leaf_expanded_old.getPointAt(s)
+      sp = s
+      r = (pt2[0]-pt1[0])*l  
+      z = (pt2[1]-pt1[1])*l
+      dl = sqrt(r**2 + z**2)
+      a = atan2(r,z) - ap
+      ap = atan2(r,z)
+      nproduce SetWidth(parameter(s)*l*lw) ^(degrees(a)) F(dl)
+  nproduce @Ge    
+endlsystem
+
+###### INITIALISATION ######
+
+__lpy_code_version__ = 1.1
+
+def __initialiseContext__(context):
+	import openalea.plantgl.all as pgl
+	Color_1 = pgl.Material("Color_1" , ambient = (56,85,40) , diffuse = 1.65882 , specular = (64,64,64) , emission = (23,23,23) , shininess = 0.92 , )
+	Color_1.name = "Color_1"
+	context.turtle.setMaterial(1,Color_1)
+	Color_3 = pgl.Material("Color_3" , ambient = (48,85,0) , diffuse = 1.77647 , specular = (52,52,52) , emission = (5,5,5) , shininess = 0.89 , transparency = 0.02 , )
+	Color_3.name = "Color_3"
+	context.turtle.setMaterial(3,Color_3)
+	import openalea.plantgl.all as pgl
+	parameter = pgl.NurbsCurve2D(	
+	    ctrlPointList = pgl.Point3Array([(0, 0.18977, 1),(0.249014, 0.490534, 1),(0.734031, 0.486309, 1),(1, 0, 1)]) , 
+	    )
+	parameter.name = "parameter"
+	import openalea.plantgl.all as pgl
+	leaf_whorl = pgl.BezierCurve2D(	
+	    pgl.Point3Array([(0.000347009, -0.000677641, 1),(-0.000193579, 0.137002, 1),(0.0185547, 0.201784, 1),(0.0563433, 0.261084, 1)]) , 
+	    )
+	leaf_whorl.name = "leaf_whorl"
+	leaf_senesce = pgl.BezierCurve2D(	
+	    pgl.Point3Array([(0.000347009, -0.000677641, 1),(0.0050471, 0.100468, 1),(-0.033574, 0.137942, 1),(0.0466898, 0.16113, 1),(-0.034808, 0.18737, 1),(-0.000532084, 0.313063, 1)]) , 
+	    )
+	leaf_senesce.name = "leaf_senesce"
+	leaf_expanded_old = pgl.BezierCurve2D(	
+	    pgl.Point3Array([(0.000347009, -0.000677641, 1),(-0.00143452, 0.232421, 1),(0.0884484, 0.116725, 1),(0.0667987, 0.216928, 1),(0.132234, 0.209807, 1),(0.172355, 0.209978, 1)]) , 
+	    )
+	leaf_expanded_old.name = "leaf_expanded_old"
+	leaf_expanded_new = pgl.BezierCurve2D(	
+	    pgl.Point3Array([(0.000347009, -0.000677641, 1),(0.00015836, 0.230828, 1),(0.0877371, 0.238319, 1),(0.0853264, 0.258695, 1),(0.0856552, 0.268065, 1),(0.107153, 0.264295, 1)]) , 
+	    )
+	leaf_expanded_new.name = "leaf_expanded_new"
+	parameter_3 = pgl.BezierCurve2D(	
+	    pgl.Point3Array([(-0.200085, -0.00349187, 1),(-0.0913125, 0.103372, 1),(0.0620598, -0.0532955, 1),(0.20105, -0.00960792, 1)]) , 
+	    )
+	parameter_3.name = "parameter_3"
+	parameter_4 = pgl.NurbsCurve2D(	
+	    ctrlPointList = pgl.Point3Array([(0, 15.597, 1),(0.483204, 15.5876, 1),(0.488915, 15.5965, 1),(1, 15.597, 1)]) , 
+	    )
+	parameter_4.name = "parameter_4"
+	parameter_2_juvenille = pgl.BezierCurve2D(	
+	    pgl.Point3Array([(-0.00150942, 0.0453173, 1),(0.050031, 0.113795, 1),(0.0926124, 0.129067, 1),(0.148476, 0.101724, 1)]) , 
+	    )
+	parameter_2_juvenille.name = "parameter_2_juvenille"
+	panel_0 = ({'active': True, 'visible': True, 'name': 'Panel 1'},[('Function',parameter),('Curve2D',leaf_whorl),('Curve2D',leaf_senesce),('Curve2D',leaf_expanded_old),('Curve2D',leaf_expanded_new),('Curve2D',parameter_3),('Function',parameter_4),('Curve2D',parameter_2_juvenille)])
+	parameterset = [panel_0,]
+	context["__functions__"] = [('parameter',parameter),('parameter_4',parameter_4),]
+	context["__curves__"] = [('leaf_whorl',leaf_whorl),('leaf_senesce',leaf_senesce),('leaf_expanded_old',leaf_expanded_old),('leaf_expanded_new',leaf_expanded_new),('parameter_3',parameter_3),('parameter_2_juvenille',parameter_2_juvenille),]
+	context["__parameterset__"] = parameterset
+	context["parameter"] = pgl.QuantisedFunction(parameter)
+	context["leaf_whorl"] = leaf_whorl
+	context["leaf_senesce"] = leaf_senesce
+	context["leaf_expanded_old"] = leaf_expanded_old
+	context["leaf_expanded_new"] = leaf_expanded_new
+	context["parameter_3"] = parameter_3
+	context["parameter_4"] = pgl.QuantisedFunction(parameter_4)
+	context["parameter_2_juvenille"] = parameter_2_juvenille
