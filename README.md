@@ -15,4 +15,4 @@ exp_fields: contains photosynthetically active radiation (PAR) data taken from R
 
 dw3: contains a .pdf describing genotyping of dwarf-3 locus and .txt of sequence amplified.
 
-qtl: contains penalties used for QTL model selection and QTL model statistics for all phenotypes discussed.
+h2_and_qtl: contains heritabilities for QTL, penalties used for QTL model selection and QTL model statistics for all phenotypes, and genotypes and phenotypes in R/qtl format.
