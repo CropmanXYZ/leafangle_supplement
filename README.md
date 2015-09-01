@@ -1,6 +1,11 @@
 leafangle_supplement
 ==================
-Supplemental Files for Truong et al. (2015)
+Supplemental files: "Harnessing Genetic Variation in Leaf Angle to Increase Productivity of *Sorghum bicolor*"
+
+Sandra K. Truong, Ryan F. McCormick, William L. Rooney, and John E. Mullet
+
+genetics.115.178608; Early online August 31, 2015
+(doi 10.1534/genetics.115.178608)
 
 Folder Descriptions:
 
