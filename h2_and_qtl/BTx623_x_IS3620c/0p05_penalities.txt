@@ -1,0 +1,6 @@
+                                                 main    heavy    light
+leaf_3_angle_csfields_2013_normalized        3.674359 5.066675 2.661817
+leaf_4_angle_csfields_2013_normalized        3.653866 5.088017 2.686210
+veg_height_GH117_LD_2014_SKTRFM_normalized   3.640737 5.265747 2.784221
+leaf_3_angle_GH117_LD_2014_SKTRFM_normalized 3.653422 5.300944 2.790586
+leaf_4_angle_GH117_LD_2014_SKTRFM_normalized 3.645160 5.300595 2.808207

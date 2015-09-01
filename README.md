@@ -1,6 +1,11 @@
 leafangle_supplement
 ==================
-Supplemental Files for Truong et al. (2015)
+Supplemental files: "Harnessing Genetic Variation in Leaf Angle to Increase Productivity of *Sorghum bicolor*"
+
+Sandra K. Truong, Ryan F. McCormick, William L. Rooney, and John E. Mullet
+
+Genetics, Early online August 31, 2015
+(doi 10.1534/genetics.115.178608)
 
 Folder Descriptions:
 
@@ -10,4 +15,4 @@ exp_fields: contains photosynthetically active radiation (PAR) data taken from R
 
 dw3: contains a .pdf describing genotyping of dwarf-3 locus and .txt of sequence amplified.
 
-qtl: contains penalties used for QTL model selection and QTL model statistics for all phenotypes discussed.
+h2_and_qtl: contains heritabilities for QTL, penalties used for QTL model selection and QTL model statistics for all phenotypes, and genotypes and phenotypes in R/qtl format.
