@@ -5,7 +5,6 @@
 # (a) output file (Eabs) from WriteTable of Caribu in OpenAlea
 # Output:
 # (a) file that contains Eabs (energy absorbed) per layer, x.
-#
 
 
 from pylab import *
