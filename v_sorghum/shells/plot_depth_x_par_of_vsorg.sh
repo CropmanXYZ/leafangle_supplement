@@ -17,12 +17,12 @@ STR_DATE="July_22_2014"
 #STR_DATE="June_15_2013"
 STR_TIME="1530_20"
 
-python_wrapper_caribu_filenamepath=/home/skt/Documents/LeafAngle/manuscript_2014/vsorg/scripts/openalea_wrapper.py
-python_calculate_eabs_filenamepath=/home/skt/Documents/LeafAngle/manuscript_2014/vsorg/scripts/calculate_eabs.py
-python_plot_eabs_filenamepath=/home/skt/Documents/LeafAngle/manuscript_2014/vsorg/scripts/plot_eabs_par_fit.py
+python_wrapper_caribu_filenamepath=./leafangle_supplement/v_sorghum/scripts/openalea_wrapper.py
+python_calculate_eabs_filenamepath=./leafangle_supplement/v_sorghum/scripts/calculate_eabs.py
+python_plot_eabs_filenamepath=./leafangle_supplement/v_sorghum/scripts/plot_eabs_par_fit.py
 
 # files
-Lpy_SMALL_ANGLE_filenamepath=/home/skt/Documents/LeafAngle/manuscript_2014/vsorg/lsystems/${STR_SMALL_ANGLE}.lpy
+Lpy_SMALL_ANGLE_filenamepath=./leafangle_supplement/v_sorghum/lsystems/${STR_SMALL_ANGLE}.lpy
 if [ -a "${Lpy_SMALL_ANGLE_filenamepath}" ]
 then
         echo -e "Lpy_SMALL_ANGLE_filenamepath exists"
@@ -30,7 +30,7 @@ else
         echo -e "\n\tUnable to locate Lpy_SMALL_ANGLE_filenamepath.\n\tPlease make sure the Lpy is in the appropriate directory.\n"
 fi
 
-Lpy_LARGE_ANGLE_filenamepath=/home/skt/Documents/LeafAngle/manuscript_2014/vsorg/lsystems/${STR_LARGE_ANGLE}.lpy
+Lpy_LARGE_ANGLE_filenamepath=./leafangle_supplement/v_sorghum/lsystems/${STR_LARGE_ANGLE}.lpy
 if [ -a "${Lpy_LARGE_ANGLE_filenamepath}" ]
 then
         echo -e "Lpy_LARGE_ANGLE_filenamepath exists"
@@ -38,7 +38,7 @@ else
         echo -e "\n\tUnable to locate Lpy_LARGE_ANGLE_filenamepath.\n\tPlease make sure the Lpy is in the appropriate directory.\n"
 fi
 
-light_filenamepath=/home/skt/Documents/LeafAngle/manuscript_2014/vsorg/light_files/${STR_DATE}/${STR_TIME}.light
+light_filenamepath=./leafangle_supplement/v_sorghum/light_files/${STR_DATE}/${STR_TIME}.light
 if [ -a "${light_filenamepath}" ]
 then
         echo -e "light_filenamepath exists"
@@ -47,7 +47,7 @@ else
 fi
 
 # file paths
-caribu_output_filepath=/home/skt/Documents/LeafAngle/manuscript_2014/vsorg/caribu_out/
+caribu_output_filepath=./leafangle_supplement/v_sorghum/caribu_out/
 if [ -d ${caribu_output_filepath} ]
 then
         echo -e "caribu_output_filepath exists"
